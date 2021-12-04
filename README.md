@@ -10,6 +10,6 @@
 
 
 ##Client Side
-- React JS
+- Angular
 - Bootstrap CSS
-- Jest and Enzyme for Unit tests
+- Jest for Unit tests
