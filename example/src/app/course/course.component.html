@@ -1,0 +1,55 @@
+<div style="margin: 5em;">
+  <h3 class="bg-primary p-a-1">{{getCollege()}} Course List</h3>
+  <div class="m-t-1 m-b-1">
+    <input class="form-control" #addCourseText [value]="courseName" (input)="validateCourseName($event.target.value)" />
+    
+    <div *ngIf="errors?.duplicateName" class="invalid-feedback">A course with the tile already exists.</div>
+    <div *ngIf="errors?.invalidName" class="invalid-feedback">Course Name cannot be empty</div>
+    <button class="btn btn-primary m-t-1" *ngIf="courseName!==''" (click)="addCourse()">
+      Add
+    </button>
+
+    <br>
+  </div>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Sl no</th>
+        <th>Course Title</th>
+        <th>Availability</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of getCourses(); let i = index">
+        <td>
+          <input
+            type="checkbox"
+            [checked]="course.selected"
+            (change)="updateSelection(course, $event.target.checked)"
+          >
+        </td>
+        <td>{{i+1}}</td>
+        <td>{{course.title}}</td>
+        <td>
+          <input
+            type="checkbox"
+            [checked]="course.available"
+            (change)="updateAvailability(course)"
+          >
+        </td>
+        <td>
+          <span *ngIf="course.available">Yes</span>
+          <span *ngIf="!course.available">No</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <button class="btn btn-primary m-t-1" *ngIf="selected.length" (click)="removeSelected()">
+    Remove {{selected.length}} Selected Course(s)
+  </button>
+
+</div>
+
+<hr>
+<br>

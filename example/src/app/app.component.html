@@ -1,0 +1,16 @@
+<div class="container">
+  <h2>Guess The Magic Number !</h2>
+  <p class="well lead">Guess the magic number between 1 and 100.</p>
+  <label>Your Guess: </label>
+  <input type="number" [value]="guess" (input)="guess = $any($event.target).value" />
+  <button (click)="checkGuess()" class="btn btn-primary btn-sm">Check</button>
+  <button (click)="initializeGame()" class="btn btn-warning btn-sm">Restart</button>
+  <div>
+    <p *ngIf="difference<0" class="alert alert-warning">Your guess is higher.</p>
+    <p *ngIf="difference>0" class="alert alert-warning">Your guess is lower.</p>
+    <p *ngIf="difference===0" class="alert alert-success">Yes! That's right.</p>
+  </div>
+  <p class="text-info">No of guesses :
+    <span class="badge">{{noOfTries}}</span>
+  </p>
+</div>

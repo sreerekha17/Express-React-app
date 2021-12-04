@@ -1,0 +1,14 @@
+input.form-control {
+    margin-bottom: 1em;
+}
+
+.invalid-feedback {
+    display: block;
+    line-height: 1em;
+    margin: 1em 0;
+}
+
+button {
+    min-width: 10em;
+    margin-bottom: 1em;
+}
